@@ -1,1 +1,1 @@
-# TwitterBotPy
+# twitter_bot
