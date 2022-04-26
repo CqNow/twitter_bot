@@ -1,0 +1,6 @@
+environs~=9.5.0
+aiogram~=2.20
+aioredis~=2.0.1
+dhooks~=1.1.4
+tweepy~=4.8.0
+googletrans~=3.1.0a0
