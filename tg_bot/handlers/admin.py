@@ -22,6 +22,13 @@ async def bot_start(message: types.Message):
     )
     tweet_stream.filter(follow=[config.tw_bot.twitter_id])
 
+@rate_limit(5, key='Check bot')
+async def bot_check(message: types.Message):
+    text = await tweet_stream.on_keep_alive()
+    if str(text) == 'Online':
+        await message.answer(text="It's Works")
+    else:
+        await message.answer(text='Offline')
 
 @rate_limit(20, key='bot_start')
 async def bot_stop(message: types.Message):
@@ -30,5 +37,6 @@ async def bot_stop(message: types.Message):
 
 def register_admin(dp: Dispatcher):
     dp.register_message_handler(admin_start, commands=['start'], is_admin=True)
-    dp.register_message_handler(bot_start, commands=['start_bot'], is_admin=True)
-    dp.register_message_handler(bot_stop, commands=['stop_bot'], is_admin=True)
+    dp.register_message_handler(bot_start, commands=['bot_start'], is_admin=True)
+    dp.register_message_handler(bot_stop, commands=['bot_stop'], is_admin=True)
+    dp.register_message_handler(bot_check, commands=['bot_check'], is_admin=True)
