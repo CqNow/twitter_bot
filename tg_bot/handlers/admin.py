@@ -12,7 +12,7 @@ async def admin_start(message: types.Message):
     await message.answer(text='Hello admin!')
 
 
-@rate_limit(20, key='bot_start')
+@rate_limit(5, key='bot_start')
 async def bot_start(message: types.Message):
     global tweet_stream
     tweet_stream = TweetStream(
@@ -31,7 +31,7 @@ async def bot_status(message: types.Message):
     else:
         await message.answer(text='Offline')
 
-@rate_limit(20, key='bot_start')
+@rate_limit(5, key='bot_start')
 async def bot_stop(message: types.Message):
     tweet_stream.disconnect()
 

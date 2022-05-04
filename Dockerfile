@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python
 ENV BOT_NAME=$BOT_NAME
 
 WORKDIR /usr/src/app/"${BOT_NAME:-tg_bot}"

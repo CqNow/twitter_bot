@@ -21,7 +21,7 @@ class TweetStream(AsyncStream):
     async def on_status(self, status):
         if from_creator(status):
             tweet_text = form_tweet_text(status)
-        await send_all(tweet_id=status.id_str, origin_text=tweet_text)
+            await send_all(tweet_id=status.id_str, origin_text=tweet_text)
 
     async def on_disconnect(self):
         self.test_word = 'Offline'
